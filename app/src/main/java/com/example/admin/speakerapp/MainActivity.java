@@ -1,17 +1,22 @@
 package com.example.admin.speakerapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
+    public static Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        activity=this;
     }
 
     @Override
@@ -35,4 +40,22 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void OnClick(View view){
+        switch(view.getId()){
+            case R.id.button_server:
+                Intent intent=new Intent(this,ServerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_client:
+                Intent intent1=new Intent(this,ClientActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.button_exit:
+                finish();
+                System.exit(0);
+                break;
+        }
+    }
+
 }
